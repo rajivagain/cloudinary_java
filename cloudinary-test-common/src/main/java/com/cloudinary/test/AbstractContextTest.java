@@ -55,7 +55,7 @@ abstract public class AbstractContextTest extends MockableTest {
 
     @Before
     public void setUp() throws Exception {
-        System.out.println("Running " + this.getClass().getName() + "." + currentTest.getMethodName());
+        logTestName(currentTest.getMethodName());
         cloudinary = new Cloudinary();
         uploader = cloudinary.uploader();
         assumeNotNull(cloudinary.config.apiSecret);

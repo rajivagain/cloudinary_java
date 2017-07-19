@@ -43,7 +43,7 @@ abstract public class AbstractStreamingProfilesApiTest extends MockableTest {
 
     @Before
     public void setUp() {
-        System.out.println("Running " + this.getClass().getName() + "." + currentTest.getMethodName());
+        logTestName(currentTest.getMethodName());
         this.cloudinary = new Cloudinary();
         assumeNotNull(cloudinary.config.apiSecret);
         this.api = cloudinary.api();

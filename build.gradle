@@ -21,6 +21,14 @@ subprojects {
         maxParallelForks = Runtime.runtime.availableProcessors()
 
         // show standard out and standard error of the test JVM(s) on the console
-        testLogging.showStandardStreams = true
+        testLogging{
+            showStandardStreams = true
+            displayGranularity = 0
+        }
+        // listen to events in the test execution lifecycle
+        beforeTest { descriptor ->
+            logger.lifecycle("Running test: " + descriptor)
+        }
+
     }
 }

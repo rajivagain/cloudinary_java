@@ -6,6 +6,7 @@ import com.cloudinary.utils.StringUtils;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
 import java.util.Map;
 import java.util.Random;
 
@@ -34,5 +35,12 @@ public class MockableTest {
         Map combinedOptions = ObjectUtils.asMap("transformation", "c_scale,w_100");
         combinedOptions.putAll(options);
         return cloudinary.uploader().upload("http://res.cloudinary.com/demo/image/upload/sample", combinedOptions);
+    }
+
+    protected void logTestName(String methodName) {
+        if(System.getenv("VERBOSE")!= null){
+            String name = " - Running " + getClass().getName() + "." + methodName + " " + ManagementFactory.getRuntimeMXBean().getName() + " " + Thread.currentThread().getName() + " " + Thread.currentThread().getId();
+            System.out.println(name);
+        }
     }
 }
