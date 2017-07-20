@@ -18,7 +18,13 @@ allprojects {
 
 subprojects {
     tasks.withType(Test) {
-        maxParallelForks = Runtime.runtime.availableProcessors()
+        def maxForks = Runtime.runtime.availableProcessors()
+        
+        // No need to run more than 3 - one for each HTTPClient variant
+        if (maxForks > 3) {
+            maxForks = 3
+        }
+        maxParallelForks = maxForks
 
         // show standard out and standard error of the test JVM(s) on the console
         testLogging{
