@@ -30,10 +30,11 @@ subprojects {
         testLogging{
             showStandardStreams = true
             displayGranularity = 0
+            showStackTraces = true
         }
         // listen to events in the test execution lifecycle
         beforeTest { descriptor ->
-            logger.lifecycle("Running test: " + descriptor)
+            logger.lifecycle("Running test: " + descriptor + " " + Thread.currentThread().getId())
         }
 
     }

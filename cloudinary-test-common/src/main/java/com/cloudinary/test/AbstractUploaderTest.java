@@ -528,6 +528,7 @@ abstract public class AbstractUploaderTest extends MockableTest {
 
     @Test
     public void testCreateArchiveRaw() throws Exception {
+        System.out.println("testCreateArchiveRaw:" + ARCHIVE_TAG);
         Map result = cloudinary.uploader().createArchive(new ArchiveParams().tags(new String[]{ARCHIVE_TAG}).resourceType("raw"));
         assertEquals(1, result.get("file_count"));
     }
