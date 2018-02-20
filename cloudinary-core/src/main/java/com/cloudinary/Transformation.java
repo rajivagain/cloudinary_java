@@ -121,7 +121,7 @@ public class Transformation<T extends Transformation> implements Serializable{
         return param("gravity", value);
     }
 
-    public T keyframeInterval(int value) {
+    public T keyframeInterval(float value) {
         return param("keyframe_interval", value);
     }
 
