@@ -121,7 +121,21 @@ public class Transformation<T extends Transformation> implements Serializable{
         return param("gravity", value);
     }
 
+    /**
+     * Set the keyframe interval parameter
+     * @param value Interval in seconds
+     * @return The transformation for chaining
+     */
     public T keyframeInterval(float value) {
+        return param("keyframe_interval", value);
+    }
+
+    /**
+     * Set the keyframe interval parameter
+     * @param value Interval in seconds.
+     * @return The transformation for chaining
+     */
+    public T keyframeInterval(String value) {
         return param("keyframe_interval", value);
     }
 
