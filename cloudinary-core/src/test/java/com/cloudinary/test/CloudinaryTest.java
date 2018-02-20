@@ -1084,6 +1084,12 @@ public class CloudinaryTest {
 
     }
 
+    @Test
+    public void testKeyframeInterval(){
+        String transformation = new Transformation().keyframeInterval(10).generate();
+        assertEquals("ki_10", transformation);
+    }
+
     public static Map<String, String> getUrlParameters(URI uri) throws UnsupportedEncodingException {
         Map<String, String> params = new HashMap<String, String>();
         for (String param : uri.getRawQuery().split("&")) {

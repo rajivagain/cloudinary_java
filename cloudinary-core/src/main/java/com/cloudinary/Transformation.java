@@ -121,6 +121,10 @@ public class Transformation<T extends Transformation> implements Serializable{
         return param("gravity", value);
     }
 
+    public T keyframeInterval(int value) {
+        return param("keyframe_interval", value);
+    }
+
     public T colorSpace(String value) {
         return param("color_space", value);
     }
@@ -623,7 +627,8 @@ public class Transformation<T extends Transformation> implements Serializable{
                 "pg", "page",
                 "u", "underlay",
                 "vs", "video_sampling",
-                "sp", "streaming_profile"
+                "sp", "streaming_profile",
+                "ki", "keyframe_interval"
                 };
 
         for (int i = 0; i < simple_params.length; i += 2) {
