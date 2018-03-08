@@ -4,6 +4,7 @@ import com.cloudinary.*;
 import com.cloudinary.utils.ObjectUtils;
 import com.cloudinary.utils.Rectangle;
 import org.cloudinary.json.JSONArray;
+import org.cloudinary.json.JSONObject;
 import org.junit.*;
 import org.junit.rules.TestName;
 
@@ -583,7 +584,12 @@ abstract public class AbstractUploaderTest extends MockableTest {
         final Date start = simpleDateFormat.parse("2019-02-22 16:20:57 +0200");
         final Date end = simpleDateFormat.parse("2019-03-22 00:00:00 +0200");
         AccessControlRule acl = AccessControlRule.anonymous(start, end);
-        assertEquals("{\"access_type\":\"anonymous\",\"start\":\"2019-02-22T14:20:57Z\",\"end\":\"2019-03-21T22:00:00Z\"}", acl.toString());
+
+        JSONObject deserializedAcl = new JSONObject(acl.toString());
+        assertEquals(deserializedAcl.get("start"), "2019-02-22T14:20:57Z");
+        assertEquals(deserializedAcl.get("end"), "2019-03-21T22:00:00Z");
+        assertEquals(deserializedAcl.get("access_type"), "anonymous");
+
         AccessControlRule token = AccessControlRule.token();
         assertEquals("{\"access_type\":\"token\"}", token.toString());
 
