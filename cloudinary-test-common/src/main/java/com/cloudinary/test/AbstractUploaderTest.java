@@ -410,11 +410,15 @@ abstract public class AbstractUploaderTest extends MockableTest {
     @Test
     public void testCategorizationRequest() {
         //should support requesting categorization
+        String errorMessage = "";
+
         try {
             cloudinary.uploader().upload(SRC_TEST_IMAGE, asMap("categorization", "illegal", "tags", Arrays.asList(SDK_TEST_TAG, UPLOADER_TAG)));
         } catch (Exception e) {
-            assertTrue(e.getMessage().matches("(.*)(Illegal value|not a valid|invalid)(.*)"));
+            errorMessage = e.getMessage();
         }
+
+        assertTrue(errorMessage.contains("Categorization item illegal is not valid"));
     }
 
     @Test

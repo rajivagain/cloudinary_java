@@ -606,8 +606,8 @@ abstract public class AbstractApiTest extends MockableTest {
         Map accessControlResult = (Map) ((List) result.get("access_control")).get(0);
 
         assertEquals("anonymous", accessControlResult.get("access_type"));
-        assertEquals("2019-02-22 14:20:57Z", accessControlResult.get("start"));
-        assertEquals("2019-03-21 22:00:00Z", accessControlResult.get("end"));
+        assertEquals("2019-02-22T14:20:57Z", accessControlResult.get("start"));
+        assertEquals("2019-03-21T22:00:00Z", accessControlResult.get("end"));
     }
 
     @Test
